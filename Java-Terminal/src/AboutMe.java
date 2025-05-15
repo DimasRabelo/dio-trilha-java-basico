@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -6,23 +7,30 @@ public class AboutMe {
 
         try (Scanner scanner = new Scanner(System.in).useLocale(Locale.US)) {
             System.out.println("Digite seu Nome: ");
-            String nome = scanner.next();
+            String nome = scanner.nextLine();
 
             System.out.println("Digite seu Sobrenome: ");
-            String sobrenome = scanner.next();
+            String sobrenome = scanner.nextLine();
 
             System.out.println("Digite sua Idade: ");
-            int idade = scanner.nextInt();
+            int idade = Integer.parseInt(scanner.nextLine());
 
             System.out.println("Digite sua Altura: ");
-            double altura = scanner.nextDouble();
+            double altura = Double.parseDouble(scanner.nextLine());
 
-            System.out.println("Ola, Me chamo " + nome + " " + sobrenome);
+            System.out.println("Olá, Me chamo " + nome + " " + sobrenome);
             System.out.println("Tenho " + idade + " anos");
-            System.out.println("Minha Altura É: " + altura + "cm");
-        }
+            System.out.println("Minha Altura é: " + altura + "cm");
 
-        // os argumentos começam com indice 0
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println("Os campos Idade e Altura aceitam apenas números válidos.");
+        }
+    }
+}
+
+
+
+ // os argumentos começam com índice 0
         /*
          * String nome = args[0];
          * String sobrenome = args[1];
@@ -33,5 +41,3 @@ public class AboutMe {
          * System.out.println("Tenho " + idade + " anos");
          * System.out.println("Minha Altura É: " + altura + "cm");
          */
-    }
-}
